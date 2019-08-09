@@ -80,7 +80,7 @@ $product = <<<DELIMETER
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
-                <a class="btn btn-primary" target="_blank" href="item?id={$row['product_id']}">Add To Cart </a>
+                <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add To Cart </a>
             </p>
            
         </div>
