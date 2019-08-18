@@ -203,6 +203,7 @@ function users_log(){
     else{
         set_error_message("Welcom Back ".$username);
         redirect('admin/index');
+        $_SESSION['islogin'] = $username;
         }
 
     }
