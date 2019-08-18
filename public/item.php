@@ -13,15 +13,15 @@ require "../resours/config.php";
        <?php include(TEMPLATE_FRONT. DS . "side_nav.php");?>
 
 
-        <?php 
-        
+        <?php
+
             $query = query("SELECT * FROM products WHERE product_id = ". escape_string($_GET['id']) . " ");
             confirm($query);
 
             while($row = fetch_array($query)):
-        
-        
-        
+
+
+
         ?>
 
 
@@ -42,7 +42,7 @@ require "../resours/config.php";
     <div class="col-md-5">
 
         <div class="thumbnail">
-         
+
 
     <div class="caption-full">
         <h4><a href="#"><?php echo $row['product_title'] ?></a> </h4>
@@ -50,7 +50,7 @@ require "../resours/config.php";
         <h4 class=""><?php echo $row['product_price']; ?><span>&#36</span></h4>
 
     <div class="ratings">
-     
+
         <p>
             <span class="glyphicon glyphicon-star"></span>
             <span class="glyphicon glyphicon-star"></span>
@@ -60,18 +60,18 @@ require "../resours/config.php";
             4.0 stars
         </p>
     </div>
-          
+
         <p><?php echo $row['short_disc'];?></p>
 
-   
+
     <form action="checkout.php">
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="ADD TO CART">
+        <a href="cart.php?add=<?php echo $row['product_id']?>" class="btn btn-primary">ADD TO CART</a>
         </div>
     </form>
 
     </div>
- 
+
 </div>
 
 </div>
@@ -101,7 +101,7 @@ require "../resours/config.php";
     <div role="tabpanel" class="tab-pane active" id="home">
 
 <p></p>
-           
+
     <p><?php echo $row['product_descripton']; ?></p>
 
     </div>
@@ -181,7 +181,7 @@ require "../resours/config.php";
         </div>
 
             <br>
-            
+
              <div class="form-group">
              <textarea name="" id="" cols="60" rows="10" class="form-control"></textarea>
             </div>

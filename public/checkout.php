@@ -20,7 +20,10 @@ require_once ("cart.php");
         <h4 class="text-center bg-danger"> <?php desplay_error_message();?></h4>
       <h1>Checkout</h1>
 
-<form action="">
+  <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_cart">
+      <input type="hidden" name="business" value="abo1@gmail.com">
+      <input type="hidden" name="currency_code" value="USD">
     <table class="table table-striped">
         <thead>
           <tr>
@@ -35,6 +38,17 @@ require_once ("cart.php");
            <?php cart(); ?>
         </tbody>
     </table>
+ <?php 
+      if($_SESSION['items'] >0){
+     ?>
+        <input type="image" name="upload" border="0"
+        src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+        alt="PayPal - The safer, easier way to pay online">
+<?php   } ?>
+    
+    
+   
+   
 </form>
 
 
@@ -48,7 +62,13 @@ require_once ("cart.php");
 
 <tr class="cart-subtotal">
 <th>Items:</th>
-<td><span class="amount">4</span></td>
+<td><span class="amount">
+
+<?php   
+  echo isset($_SESSION['items']) ? $_SESSION['items'] : $_SESSION['items'] = 0;
+?>
+
+</span></td>
 </tr>
 <tr class="shipping">
 <th>Shipping and Handling</th>
@@ -57,10 +77,7 @@ require_once ("cart.php");
 
 <tr class="order-total">
 <th>Order Total</th>
-<td><strong><span class="amount">$3444</span></strong> </td>
-</tr>
-
-
+<td><strong><span class="amount">$<?php echo isset($_SESSION['sub_total']) ? $_SESSION['sub_total'] : $_SESSION['sub_total'] = 0;?></span></strong> </td></tr>
 </tbody>
 
 </table>

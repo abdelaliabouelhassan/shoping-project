@@ -54,7 +54,7 @@ function fetch_array($result)
 
 
 function get_products(){
-   
+
 
 
     $query = query("SELECT * FROM products");
@@ -65,7 +65,7 @@ while($row = fetch_array($query)){
 $product = <<<DELIMETER
     <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
-    <a href="item?id={$row['product_id']}"> <img src="{$row['product_img']}" alt=""></a> 
+    <a href="item?id={$row['product_id']}"> <img src="{$row['product_img']}" alt=""></a>
         <div class="caption">
             <h4 class="pull-right"><span>&#36</span>{$row['product_price']} </h4>
             <h4><a href="item?id={$row['product_id']}">{$row['product_title']}</a>
@@ -82,7 +82,7 @@ $product = <<<DELIMETER
                 <span class="glyphicon glyphicon-star"></span>
                 <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add To Cart </a>
             </p>
-           
+
         </div>
     </div>
 </div>
@@ -105,9 +105,9 @@ function get_category(){
     confirm($query);
     while($row = fetch_array($query)){
         $categorys = <<<DELIMETER
-    
+
         <a href="category?id={$row['cat_id']}" class="list-group-item">{$row['cat_title']}</a>
-            
+
 DELIMETER;
 echo $categorys;
     }//end while
@@ -134,13 +134,13 @@ function get_category2(){
                     <h3>{$row['product_title']}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                     <p>
-                        <a href="#" class="btn btn-primary">Buy Now!</a> <a href="item?id={$row['product_id']}" class="btn btn-default">More Info</a>
+                        <a href="cart.php?add={$row['product_id']}" class="btn btn-primary">Buy Now!</a> <a href="item?id={$row['product_id']}" class="btn btn-default">More Info</a>
                     </p>
                 </div>
             </div>
         </div>
 
-        
+
 
 
 DELIMETER;
@@ -161,13 +161,13 @@ function get_category_in_shopPage(){
                 <h3>{$row['product_title']}</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 <p>
-                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="item?id={$row['product_id']}" class="btn btn-default">More Info</a>
+                    <a href="cart?add={$row['product_id']}" class="btn btn-primary">Buy Now!</a> <a href="item?id={$row['product_id']}" class="btn btn-default">More Info</a>
                 </p>
             </div>
         </div>
     </div>
 
-    
+
 
 
 DELIMETER;
@@ -190,7 +190,7 @@ function users_log(){
     {
         $username = $_POST['username'];
         $password   = $_POST['password'];
-    
+
 
     $query = query("SELECT * FROM users WHERE username = '{$username}'AND password = '{$password}'");
     confirm($query);
@@ -198,7 +198,7 @@ function users_log(){
     if(mysqli_num_rows($query) == 0){
         set_error_message("Password or Username Are Wrong! ");
        redirect("login");
-      
+
     }
     else{
         set_error_message("Welcom Back ".$username);
@@ -215,7 +215,7 @@ function users_log(){
 
 function contact(){
     if(isset($_POST['submit'])){
-            
+
       $to ="abdelali54abouelhassan@gmail.com";
       $from = $_POST['name'];
       $subject = $_POST['phone'];
